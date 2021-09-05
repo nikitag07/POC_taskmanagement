@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="row mt-5">
+    <div class="col-md-3">
+        {% include 'sidebar.html' %}
+    </div>
+    <div class="col-md-9">
+        <div class="card">
+            <h5 class="card-header">Add Reply <a href="/replies/{{work_detail.id}}" class="btn btn-primary btn-sm float-right"><i class="fa fa-long-arrow-left"></i> All Replies</a></h5>
+            <div class="card-body">
+                {% if messages %}
+                    {% for message in messages %}
+                    <p class="text-success">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+                <small class="text-muted">{{work_detail.work_detail}}</small>
+                <form action="/add-reply/{{work_detail.id}}" method="post" class="mt-3">
+                    {% csrf_token %}
+                    <table class="table table-bordered" id="dataTable">
+                        <tr>
+                            <th>Reply Text</th>
+                            <td>
+                                <textarea name="reply_txt" class="form-control" rows="8"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Reply Status</th>
+                            <td>
+                                <input type="number" name="reply_status" class="form-control" placeholder="Enter 0 or 1" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" class="btn btn-danger" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

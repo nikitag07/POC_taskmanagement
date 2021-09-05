@@ -1,0 +1,7 @@
+<div class="list-group">
+    <a href="/dashboard" class="list-group-item">Assigned Work</a>
+    <a href="/completed" class="list-group-item">Completed Work</a>
+    {% if request.session.loginUser %}
+    <a href="/logout" class="list-group-item">Logout</a>
+    {% endif %}
+</div>

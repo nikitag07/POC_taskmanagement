@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="row mt-5">
+    <div class="col-md-3">
+        {% include 'sidebar.html' %}
+    </div>
+    <div class="col-md-9">
+        <div class="card">
+            <h5 class="card-header">Completed Work</h5>
+            <div class="card-body">
+                <table class="table table-bordered" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>#ID</th>
+                            <th>Work Summery</th>
+                            <th>Assigned Time</th>
+                            <th>Completed Time</th>
+                            <th>Replies</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% if completed_works %}
+                        {% for work in completed_works %}
+                        <tr>
+                            <td>{{work.id}}</td>
+                            <td>{{work.work_detail}}</td>
+                            <td>{{work.assign_time}}</td>
+                            <td>{{work.assign_time}}</td>
+                            <td><a href="/replies/{{work.id}}" class="btn btn-sm btn-primary"><i class="fa fa-list"></i></a></td>
+                        </tr>
+                        {% endfor %}
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

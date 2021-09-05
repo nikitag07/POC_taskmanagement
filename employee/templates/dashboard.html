@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="row mt-5">
+    <div class="col-md-3">
+        {% include 'sidebar.html' %}
+    </div>
+    <div class="col-md-9">
+        <div class="card">
+            <h5 class="card-header">Assigned Work</h5>
+            <div class="card-body">
+                <table class="table table-bordered" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>#ID</th>
+                            <th>Work Summery</th>
+                            <th>Assigned Time</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% if assigned_works %}
+                        {% for work in assigned_works %}
+                        <tr>
+                            <td>{{work.id}}</td>
+                            <td>
+                                {{work.work_detail|truncatewords:10}}
+                            </td>
+                            <td>{{work.assign_time}}</td>
+                            <td>
+                                <a href="#" title="Full Detail" data-toggle="modal" data-target=
+                                "#fullDetail{{work.id}}" class="btn btn-primary btn-sm mt-1"><i class="fa fa-eye"></i></a>
+                                <a href="/replies/{{work.id}}" title="Reply" class="btn btn-success btn-sm mt-1"><i class="fa fa-reply"></i></a>
+<!-- Full Detail Modal Start -->
+<div class="modal fade" tabindex="-1" id="fullDetail{{work.id}}" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Full Detail</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>{{work.work_detail|linebreaks}}</p>
+        </div>
+        <div class="modal-footer">
+            <a href="/replies/{{work.id}}" title="Reply" class="btn btn-success"><i class="fa fa-reply"></i></a>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- ## End -->
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

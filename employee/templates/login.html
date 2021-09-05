@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Login</title>
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+</head>
+<body class="bg-light">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-sm-6 offset-3">
+                <div class="card shadow">
+                    <h5 class="card-header">Login Panel</h5>
+                    <div class="card-body">
+                        {% if messages %}
+                            {% for message in messages %}
+                            <p class="text-warning">{{message}}</p>
+                            {% endfor %}
+                        {% endif %}
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Email</th>
+                                    <th>
+                                        <input type="text" name="email" class="form-control">
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>Password</th>
+                                    <th>
+                                        <input type="password" name="pwd" class="form-control">
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <input type="submit" class="btn btn-dark" value="Login" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

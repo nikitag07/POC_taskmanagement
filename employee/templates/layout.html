@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Assigned Works</title>
+    <!-- Font Awesome 4 -->
+    <link rel="stylesheet" href="{% static 'fa4/css/font-awesome.min.css' %}" />
+    <!-- Main CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static "DataTables-1.10.18/css/dataTables.bootstrap4.min.css" %}">
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+</head>
+<body class="bg-light">
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+<!-- Main Jquery -->
+<script type="text/javascript" src="{% static "jquery-3.3.1.min.js" %}"></script>
+<!-- BootstrapJs -->
+<script type="text/javascript" src="{% static "bootstrap.min.js" %}"></script>
+<script type="text/javascript" src="{% static "DataTables-1.10.18/js/jquery.dataTables.min.js" %}"></script>
+<script type="text/javascript" src="{% static "DataTables-1.10.18/js/dataTables.bootstrap4.min.js" %}"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#dataTable").DataTable();
+	})
+</script>
+</html>
